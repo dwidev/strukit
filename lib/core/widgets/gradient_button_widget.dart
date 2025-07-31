@@ -30,14 +30,13 @@ class GradientButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 56,
+
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [AppColors.gradientStart, AppColors.gradientEnd],
-        ),
+        gradient: LinearGradient(colors: AppTheme.getGradients(context)),
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primary.toOpacity(0.3),
+            color: AppColors.darkBackground.toOpacity(0.3),
             blurRadius: 15,
             offset: const Offset(0, 8),
           ),
@@ -56,7 +55,8 @@ class GradientButtonWidget extends StatelessWidget {
             ? const SizedBox(
                 width: 24,
                 height: 24,
-                child: CircularProgressIndicator(
+                child: CircularProgressIndicator.adaptive(
+                  backgroundColor: Colors.white,
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                   strokeWidth: 2,
                 ),

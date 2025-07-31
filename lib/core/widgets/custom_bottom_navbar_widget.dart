@@ -44,7 +44,7 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
       height: 70,
       margin: const EdgeInsets.fromLTRB(20, 0, 20, 25),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppTheme.getSurfaceColor(context),
         borderRadius: BorderRadius.circular(35),
         boxShadow: [
           BoxShadow(
@@ -149,11 +149,13 @@ class _ScannerButtonState extends State<_ScannerButton> {
                 width: 60,
                 height: 60,
                 decoration: BoxDecoration(
-                  color: AppColors.secondary,
+                  gradient: LinearGradient(
+                    colors: AppTheme.getGradients(context),
+                  ),
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.secondary.toOpacity(0.5),
+                      color: AppColors.darkBackground.toOpacity(0.3),
                       blurRadius: 12,
                       offset: const Offset(0, 4),
                     ),
@@ -212,7 +214,7 @@ class _NavItemState extends State<_NavItem> {
                   widget.icon,
                   color: widget.isActive
                       ? AppColors.secondary
-                      : AppColors.textSecondary,
+                      : AppColors.lightTextSecondary,
                   size: 22,
                 ),
               )

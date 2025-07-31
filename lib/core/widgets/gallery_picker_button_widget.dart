@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:strukit/core/themes/app_theme.dart';
 
 class GalleryPickerButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final double size;
-  final Color backgroundColor;
   final Color iconColor;
   final IconData icon;
 
@@ -11,7 +11,6 @@ class GalleryPickerButton extends StatelessWidget {
     super.key,
     this.onPressed,
     this.size = 50.0,
-    this.backgroundColor = const Color(0xFF4F46E5),
     this.iconColor = Colors.white,
     this.icon = Icons.photo_library,
   });
@@ -24,11 +23,11 @@ class GalleryPickerButton extends StatelessWidget {
         width: size,
         height: size,
         decoration: BoxDecoration(
-          color: backgroundColor,
           borderRadius: BorderRadius.circular(12),
+          gradient: LinearGradient(colors: AppTheme.getGradients(context)),
           boxShadow: [
             BoxShadow(
-              color: backgroundColor.withAlpha(30),
+              color: AppColors.darkBackground.withAlpha(30),
               blurRadius: 8,
               offset: const Offset(0, 4),
             ),

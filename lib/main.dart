@@ -1,8 +1,7 @@
 // main.dart
 import 'package:flutter/material.dart';
 import 'package:strukit/core/themes/app_theme.dart';
-import 'package:strukit/pages/home_page.dart';
-import 'package:strukit/pages/login_page.dart';
+import 'package:strukit/pages/login/login_page.dart';
 
 void main() {
   runApp(const ReceiptScannerApp());
@@ -16,6 +15,8 @@ class ReceiptScannerApp extends StatelessWidget {
     return MaterialApp(
       title: 'Receipt Scanner',
       theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system,
       home: const LoginPage(),
       debugShowCheckedModeBanner: false,
     );

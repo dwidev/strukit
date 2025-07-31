@@ -25,9 +25,12 @@ class BudgetCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white.withAlpha(40),
+        color: AppTheme.getBackgroundColor(context).toOpacity(0.24),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white, width: 1),
+        border: Border.all(
+          color: AppTheme.getBackgroundColor(context).toOpacity(0.7),
+          width: 1,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +75,7 @@ class BudgetCard extends StatelessWidget {
           const SizedBox(height: 15),
           CustomLinearProgressIndicator(
             value: 0.5,
-            gradientColors: AppTheme.gradientsOrange,
+            gradientColors: AppTheme.getGradientsOrange(context),
             height: 8,
           ),
           const SizedBox(height: 8),

@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: AppTheme.gradients,
+                colors: AppTheme.getGradients(context),
                 stops: [0.1, 1],
               ),
               borderRadius: BorderRadius.only(

@@ -159,7 +159,7 @@ class _ScannerPageState extends State<ScannerPage>
     );
 
     String text = recognizedText.text;
-    print("""
+    debugPrint("""
     ### DATA OCR ###
     $text
     ### end DATA OCR ###  
@@ -188,7 +188,6 @@ class _ScannerPageState extends State<ScannerPage>
     final scanHeight = size.height / 1.5;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F9FA),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -295,7 +294,7 @@ class _ScannerPageState extends State<ScannerPage>
                 style: textTheme.bodySmall?.copyWith(
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
-                  color: hasError ? Colors.red[700] : const Color(0xFF212121),
+                  color: hasError ? Colors.red[700] : null,
                 ),
               ).animate().fadeIn(duration: 600.ms).slideY(begin: -0.2),
 
@@ -385,7 +384,7 @@ class _ScannerPageState extends State<ScannerPage>
       margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: AppColors.dark.toOpacity(0.8),
+        color: AppTheme.getSurfaceColor(context).toOpacity(0.7),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: Colors.white.toOpacity(0.2), width: 1),
       ),

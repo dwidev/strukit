@@ -19,8 +19,8 @@ class ScanButton extends StatelessWidget {
               width: 64,
               height: 64,
               decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [AppColors.gradientStart, AppColors.gradientEnd],
+                gradient: LinearGradient(
+                  colors: AppTheme.getGradients(context),
                 ),
                 borderRadius: BorderRadius.circular(32),
                 boxShadow: [

@@ -196,11 +196,8 @@ class RecentActivity extends StatelessWidget {
                         width: 40,
                         height: 40,
                         decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [
-                              AppColors.gradientStart,
-                              AppColors.gradientEnd,
-                            ],
+                          gradient: LinearGradient(
+                            colors: AppTheme.getGradients(context),
                           ),
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -224,11 +221,7 @@ class RecentActivity extends StatelessWidget {
                             const SizedBox(height: 4),
                             Row(
                               children: [
-                                const Icon(
-                                  Icons.access_time,
-                                  size: 12,
-                                  color: AppColors.textTertiary,
-                                ),
+                                const Icon(Icons.access_time, size: 12),
                                 const SizedBox(width: 4),
                                 Text(
                                   scan.time,

@@ -2,63 +2,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class AppColors {
-  // Primary Colors
-  static const primary = Color(0xFF4F46E5); // Indigo-600
-  static const primaryVariant = Color(0xFF06B6D4); // Cyan-600
-  static const secondary = Color(0xFF2196F3); // Green-500
-
-  // Background Colors
-  static const dark = Color.fromARGB(255, 25, 25, 25); // Gray-50
-  static const background = Color(0xFFF9FAFB); // Gray-50
-  static const surface = Colors.white;
-  static const surfaceVariant = Color(0xFFF3F4F6); // Gray-100
-
-  // Text Colors
-  static const textPrimary = Color(0xFF111827); // Gray-900
-  static const textSecondary = Color(0xFF6B7280); // Gray-500
-  static const textTertiary = Color(0xFF9CA3AF); // Gray-400
-
-  // Status Colors
-  static const success = Color(0xFF4CAF50); // Green-500
-  static const warning = Color(0xFFF59E0B); // Amber-500
-  static const error = Color(0xFFEF4444); // Red-500
-
-  // Gradient Colors
-  static const gradientStart = primary; // Indigo-600
-  static const gradientMiddle = Color(0xFF7C3AED); // Purple-600
-  static const gradientEnd = primaryVariant; // Cyan-600
-}
-
-extension ColorExt on Color {
-  Color toOpacity(double value) {
-    return withAlpha((value * 255).toInt());
-  }
-}
+part 'app_colors.dart';
 
 class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,
+      brightness: Brightness.light,
       colorScheme: ColorScheme.fromSeed(
         seedColor: AppColors.primary,
         brightness: Brightness.light,
       ),
-      scaffoldBackgroundColor: AppColors.background,
+      scaffoldBackgroundColor: AppColors.lightBackground,
       appBarTheme: const AppBarTheme(
         backgroundColor: Colors.transparent,
         elevation: 0,
         systemOverlayStyle: SystemUiOverlayStyle.dark,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: IconThemeData(color: AppColors.lightTextPrimary),
         titleTextStyle: TextStyle(
-          color: Colors.white,
+          color: AppColors.lightTextPrimary,
           fontSize: 18,
           fontWeight: FontWeight.w600,
         ),
       ),
       cardTheme: CardThemeData(
-        color: AppColors.surface,
-        elevation: 2,
+        color: AppColors.lightSurface,
+        elevation: 5,
         shadowColor: Colors.black.withAlpha(50),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
@@ -74,34 +43,65 @@ class AppTheme {
           textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
       ),
+      inputDecorationTheme: InputDecorationTheme(
+        hintStyle: TextStyle(color: AppColors.lightTextTertiary, fontSize: 15),
+        filled: true,
+        fillColor: AppColors.lightSurfaceVariant.toOpacity(0.5),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide.none,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(
+            color: AppColors.lightSurfaceVariant,
+            width: 1,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: const BorderSide(
+            color: AppColors.primaryVariant,
+            width: 2,
+          ),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: const BorderSide(color: AppColors.error, width: 1),
+        ),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 16,
+        ),
+      ),
       textTheme: const TextTheme(
         headlineLarge: TextStyle(
-          color: AppColors.textPrimary,
+          color: AppColors.lightTextPrimary,
           fontSize: 32,
           fontWeight: FontWeight.bold,
         ),
         headlineMedium: TextStyle(
-          color: AppColors.textPrimary,
+          color: AppColors.lightTextPrimary,
           fontSize: 24,
           fontWeight: FontWeight.bold,
         ),
         headlineSmall: TextStyle(
-          color: AppColors.textPrimary,
+          color: AppColors.lightTextPrimary,
           fontSize: 20,
           fontWeight: FontWeight.w600,
         ),
         bodyLarge: TextStyle(
-          color: AppColors.textPrimary,
+          color: AppColors.lightTextPrimary,
           fontSize: 16,
           fontWeight: FontWeight.normal,
         ),
         bodyMedium: TextStyle(
-          color: AppColors.textSecondary,
+          color: AppColors.lightTextSecondary,
           fontSize: 14,
           fontWeight: FontWeight.normal,
         ),
         bodySmall: TextStyle(
-          color: AppColors.textTertiary,
+          color: AppColors.lightTextTertiary,
           fontSize: 12,
           fontWeight: FontWeight.normal,
         ),
@@ -109,11 +109,167 @@ class AppTheme {
     );
   }
 
-  static List<Color> get gradients {
-    return [AppColors.gradientStart, AppColors.gradientEnd];
+  static ThemeData get darkTheme {
+    return ThemeData(
+      useMaterial3: true,
+      brightness: Brightness.dark,
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: AppColors.primary,
+        brightness: Brightness.dark,
+      ),
+      scaffoldBackgroundColor: AppColors.darkBackground,
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
+        iconTheme: IconThemeData(color: AppColors.darkTextPrimary),
+        titleTextStyle: TextStyle(
+          color: AppColors.darkTextPrimary,
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+      cardTheme: CardThemeData(
+        color: AppColors.darkSurface,
+        elevation: 3,
+        shadowColor: AppColors.darkSurface,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.primary,
+          foregroundColor: Colors.white,
+          elevation: 3,
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+        ),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        hintStyle: TextStyle(color: AppColors.darkTextTertiary, fontSize: 15),
+        filled: true,
+        fillColor: AppColors.darkSurfaceVariant.toOpacity(0.3),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide.none,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(color: AppColors.darkSurfaceVariant, width: 1),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: const BorderSide(
+            color: AppColors.primaryVariant,
+            width: 2,
+          ),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: const BorderSide(color: AppColors.error, width: 1),
+        ),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 16,
+        ),
+      ),
+      textTheme: const TextTheme(
+        headlineLarge: TextStyle(
+          color: AppColors.darkTextPrimary,
+          fontSize: 32,
+          fontWeight: FontWeight.bold,
+        ),
+        headlineMedium: TextStyle(
+          color: AppColors.darkTextPrimary,
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+        ),
+        headlineSmall: TextStyle(
+          color: AppColors.darkTextPrimary,
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+        ),
+        bodyLarge: TextStyle(
+          color: AppColors.darkTextPrimary,
+          fontSize: 16,
+          fontWeight: FontWeight.normal,
+        ),
+        bodyMedium: TextStyle(
+          color: AppColors.darkTextSecondary,
+          fontSize: 14,
+          fontWeight: FontWeight.normal,
+        ),
+        bodySmall: TextStyle(
+          color: AppColors.darkTextTertiary,
+          fontSize: 12,
+          fontWeight: FontWeight.normal,
+        ),
+      ),
+    );
   }
 
-  static List<Color> get gradientsOrange {
-    return [AppColors.warning, AppColors.error];
+  // Light Theme Gradients
+  static List<Color> get lightGradients {
+    return [AppColors.lightGradientStart, AppColors.lightGradientEnd];
+  }
+
+  static List<Color> get lightGradientsOrange {
+    return [
+      AppColors.lightOrangeGradientStart,
+      AppColors.lightOrangeGradientEnd,
+    ];
+  }
+
+  // Dark Theme Gradients
+  static List<Color> get darkGradients {
+    return [AppColors.darkGradientStart, AppColors.darkGradientEnd];
+  }
+
+  static List<Color> get darkGradientsOrange {
+    return [AppColors.darkOrangeGradientStart, AppColors.darkOrangeGradientEnd];
+  }
+
+  // Helper methods to get appropriate gradients based on brightness
+  static List<Color> getGradients(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    return brightness == Brightness.dark ? darkGradients : lightGradients;
+  }
+
+  static List<Color> getGradientsOrange(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    return brightness == Brightness.dark
+        ? darkGradientsOrange
+        : lightGradientsOrange;
+  }
+
+  // Helper methods to get appropriate colors based on brightness
+  static Color getBackgroundColor(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    return brightness == Brightness.dark
+        ? AppColors.darkBackground
+        : AppColors.lightBackground;
+  }
+
+  static Color getSurfaceColor(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    return brightness == Brightness.dark
+        ? AppColors.darkSurface
+        : AppColors.lightSurface;
+  }
+
+  static Color getTextPrimaryColor(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    return brightness == Brightness.dark
+        ? AppColors.darkTextPrimary
+        : AppColors.lightTextPrimary;
+  }
+
+  static Color getTextSecondaryColor(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    return brightness == Brightness.dark
+        ? AppColors.darkTextSecondary
+        : AppColors.lightTextSecondary;
   }
 }

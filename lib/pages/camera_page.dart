@@ -1,12 +1,10 @@
-// screens/scanner_screen.dart
-import 'package:camera/camera.dart';
-import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:camera/camera.dart';
+import 'package:flutter/material.dart';
 import 'package:strukit/core/themes/app_theme.dart';
 import 'package:strukit/core/widgets/camera_button_widget.dart';
 import 'package:strukit/core/widgets/gallery_picker_button_widget.dart';
-import 'package:strukit/pages/scanned_receipt_page.dart';
 import 'package:strukit/pages/scanner_page.dart';
 
 class CameraPage extends StatefulWidget {
@@ -86,7 +84,7 @@ class _CameraPageState extends State<CameraPage> {
             Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [AppColors.gradientStart, AppColors.gradientEnd],
+                  colors: AppTheme.getGradients(context),
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
@@ -114,7 +112,7 @@ class _CameraPageState extends State<CameraPage> {
                     SafeArea(
                       top: false,
                       bottom: true,
-                      child: Container(
+                      child: SizedBox(
                         width: size.width,
                         child: Stack(
                           alignment: Alignment.center,
@@ -151,13 +149,11 @@ class ReceiptFrame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      margin: EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: AppColors.surface.withAlpha(50),
         borderRadius: BorderRadius.circular(16),
+        color: AppColors.lightTextTertiary.toOpacity(0.2),
       ),
       child: Stack(
         children: [

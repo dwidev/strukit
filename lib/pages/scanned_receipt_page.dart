@@ -1,6 +1,9 @@
+import 'package:dev_utils/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:strukit/core/themes/app_theme.dart';
+import 'package:strukit/core/widgets/gradient_button_widget.dart';
 import 'package:strukit/pages/edit_receipt__page.dart';
 
 class ScannedReceiptPage extends StatefulWidget {
@@ -26,7 +29,6 @@ class _ScannedReceiptPageState extends State<ScannedReceiptPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F9FA),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -40,7 +42,7 @@ class _ScannedReceiptPageState extends State<ScannedReceiptPage> {
                   width: 8,
                   height: 8,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF4CAF50),
+                    color: AppColors.success,
                     shape: BoxShape.circle,
                   ),
                 )
@@ -73,7 +75,7 @@ class _ScannedReceiptPageState extends State<ScannedReceiptPage> {
           IconButton(
             icon: Icon(
               isEditing ? Icons.check : Icons.edit,
-              color: const Color(0xFF2196F3),
+              color: AppColors.secondary,
             ),
             onPressed: () {
               setState(() {
@@ -86,18 +88,7 @@ class _ScannedReceiptPageState extends State<ScannedReceiptPage> {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child:
-            Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.toOpacity(0.06),
-                        blurRadius: 20,
-                        offset: const Offset(0, 8),
-                      ),
-                    ],
-                  ),
+            Card(
                   child: Padding(
                     padding: const EdgeInsets.all(24),
                     child: Column(
@@ -160,12 +151,12 @@ class _ScannedReceiptPageState extends State<ScannedReceiptPage> {
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: const Color(0xFF4CAF50).toOpacity(0.1),
+            color: AppColors.success.toOpacity(0.1),
             borderRadius: BorderRadius.circular(12),
           ),
           child: const Icon(
             Icons.qr_code_scanner,
-            color: Color(0xFF4CAF50),
+            color: AppColors.success,
             size: 24,
           ),
         ),
@@ -176,11 +167,7 @@ class _ScannedReceiptPageState extends State<ScannedReceiptPage> {
             children: [
               const Text(
                 'Scan Berhasil!',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xFF212121),
-                ),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
               ),
               const SizedBox(height: 4),
               Text(
@@ -215,11 +202,7 @@ class _ScannedReceiptPageState extends State<ScannedReceiptPage> {
       children: [
         const Text(
           'Detail Toko',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: Color(0xFF212121),
-          ),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
         const SizedBox(height: 16),
         _buildDetailRow('Nama Toko', 'Indomaret Pajajaran'),
@@ -244,11 +227,7 @@ class _ScannedReceiptPageState extends State<ScannedReceiptPage> {
       children: [
         const Text(
           'Daftar item',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: Color(0xFF212121),
-          ),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
         const SizedBox(height: 16),
         ...items.map(
@@ -259,45 +238,45 @@ class _ScannedReceiptPageState extends State<ScannedReceiptPage> {
   }
 
   Widget _buildItemRow(String name, String qty, String price) {
-    return Container(
+    return Card(
       margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: const Color(0xFFF8F9FA),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: const Color(0xFFE0E0E0), width: 1),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  name,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xFF212121),
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: const Color(0xFFE0E0E0), width: 1),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  'Qty: $qty',
-                  style: TextStyle(fontSize: 12, color: Colors.grey[600]),
-                ),
-              ],
+                  const SizedBox(height: 2),
+                  Text(
+                    'Qty: $qty',
+                    style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Text(
-            price,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
-              color: Color(0xFF2196F3),
+            Text(
+              price,
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF2196F3),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -308,11 +287,7 @@ class _ScannedReceiptPageState extends State<ScannedReceiptPage> {
       children: [
         const Text(
           'Kategori Pengeluaran',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: Color(0xFF212121),
-          ),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
         const SizedBox(height: 16),
         Wrap(
@@ -332,15 +307,16 @@ class _ScannedReceiptPageState extends State<ScannedReceiptPage> {
                       vertical: 8,
                     ),
                     decoration: BoxDecoration(
-                      color: isSelected
-                          ? const Color(0xFF2196F3)
-                          : const Color(0xFFF8F9FA),
+                      gradient: isSelected
+                          ? LinearGradient(
+                              colors: AppTheme.getGradients(context),
+                            )
+                          : null,
+                      color: !isSelected ? const Color(0xFFF8F9FA) : null,
                       borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        color: isSelected
-                            ? const Color(0xFF2196F3)
-                            : const Color(0xFFE0E0E0),
-                      ),
+                      border: isSelected
+                          ? Border.all(color: AppColors.secondary)
+                          : null,
                     ),
                     child: Text(
                       category,
@@ -373,39 +349,33 @@ class _ScannedReceiptPageState extends State<ScannedReceiptPage> {
       children: [
         const Text(
           'Ringkasan',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: Color(0xFF212121),
-          ),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
         const SizedBox(height: 16),
         _buildSummaryRow('Subtotal', 'Rp 31.000'),
         _buildSummaryRow('PPN (11%)', 'Rp 3.410'),
         const SizedBox(height: 12),
         Container(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
           decoration: BoxDecoration(
-            color: const Color(0xFF2196F3).toOpacity(0.05),
+            color: AppColors.secondary.toOpacity(0.05),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Total Pengeluaran',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xFF2196F3),
+              Text(
+                'Total ',
+                style: context.textTheme.headlineSmall?.copyWith(
+                  color: AppColors.secondary,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              const Text(
+              Text(
                 'Rp 34.410',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xFF2196F3),
+                style: context.textTheme.headlineSmall?.copyWith(
+                  color: AppColors.secondary,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],
@@ -424,11 +394,7 @@ class _ScannedReceiptPageState extends State<ScannedReceiptPage> {
           Text(label, style: TextStyle(fontSize: 14, color: Colors.grey[600])),
           Text(
             value,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Color(0xFF212121),
-            ),
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
           ),
         ],
       ),
@@ -439,54 +405,11 @@ class _ScannedReceiptPageState extends State<ScannedReceiptPage> {
     return Column(
           children: [
             // Save to Budget Button
-            Container(
-              width: double.infinity,
-              height: 52,
-              decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [Color(0xFF2196F3), Color(0xFF1976D2)],
-                ),
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color(0xFF2196F3).toOpacity(0.3),
-                    blurRadius: 12,
-                    offset: const Offset(0, 6),
-                  ),
-                ],
-              ),
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(16),
-                  onTap: () {
-                    // Save to budget logic
-                    _showSuccessDialog();
-                  },
-                  child: const Center(
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          Icons.add_circle_outline,
-                          color: Colors.white,
-                          size: 20,
-                        ),
-                        SizedBox(width: 8),
-                        Text(
-                          'Tambah ke Budget',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+            GradientButtonWidget(
+              onPressed: () {},
+              options: GradientButtonWidgetOptions(
+                title: "Simpan",
+                icon: FontAwesomeIcons.cloud,
               ),
             ),
 
@@ -497,9 +420,8 @@ class _ScannedReceiptPageState extends State<ScannedReceiptPage> {
               width: double.infinity,
               height: 52,
               decoration: BoxDecoration(
-                color: Colors.white,
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: const Color(0xFF2196F3), width: 2),
+                border: Border.all(color: AppColors.secondary, width: 2),
               ),
               child: Material(
                 color: Colors.transparent,
@@ -554,11 +476,7 @@ class _ScannedReceiptPageState extends State<ScannedReceiptPage> {
           Text(label, style: TextStyle(fontSize: 14, color: Colors.grey[600])),
           Text(
             value,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Color(0xFF212121),
-            ),
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
           ),
         ],
       ),
@@ -587,7 +505,7 @@ class _ScannedReceiptPageState extends State<ScannedReceiptPage> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: const Row(
           children: [
-            Icon(Icons.check_circle, color: Color(0xFF4CAF50)),
+            Icon(Icons.check_circle, color: AppColors.success),
             SizedBox(width: 8),
             Text('Berhasil!'),
           ],

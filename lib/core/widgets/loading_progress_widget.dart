@@ -173,7 +173,9 @@ class _CustomLinearProgressIndicatorState
             gradient:
                 widget.gradient ??
                 LinearGradient(
-                  colors: widget.gradientColors ?? AppTheme.gradientsOrange,
+                  colors:
+                      widget.gradientColors ??
+                      AppTheme.getGradientsOrange(context),
                 ),
             borderRadius: BorderRadius.circular(widget.borderRadius),
           ),
