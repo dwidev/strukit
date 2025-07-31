@@ -4,7 +4,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:strukit/core/widgets/budget_card_widget.dart';
 import 'package:strukit/core/widgets/card_widget.dart';
 import 'package:strukit/core/widgets/custom_bottom_navbar_widget.dart';
-import 'package:strukit/core/widgets/scan_button_widget.dart';
 import 'package:strukit/pages/camera_page.dart';
 
 import '../core/themes/app_theme.dart';

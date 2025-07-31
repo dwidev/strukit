@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:strukit/core/themes/app_theme.dart';
+import 'package:strukit/core/widgets/loading_progress_widget.dart';
 
 class BudgetCard extends StatelessWidget {
   final double spent;
@@ -69,35 +70,10 @@ class BudgetCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 15),
-          Stack(
-            children: [
-              Container(
-                height: 8,
-                decoration: BoxDecoration(
-                  color: AppColors.surfaceVariant.withAlpha(50),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-              ),
-              Container(
-                height: 8,
-                decoration: BoxDecoration(
-                  color: AppColors.textPrimary,
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: FractionallySizedBox(
-                  alignment: Alignment.centerLeft,
-                  widthFactor: progressPercentage / 100,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [AppColors.warning, AppColors.error],
-                      ),
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                  ),
-                ),
-              ),
-            ],
+          CustomLinearProgressIndicator(
+            value: 0.5,
+            gradientColors: AppTheme.gradientsOrange,
+            height: 8,
           ),
           const SizedBox(height: 8),
           Row(

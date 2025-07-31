@@ -9,6 +9,7 @@ class AppColors {
   static const secondary = Color(0xFF2196F3); // Green-500
 
   // Background Colors
+  static const dark = Color.fromARGB(255, 25, 25, 25); // Gray-50
   static const background = Color(0xFFF9FAFB); // Gray-50
   static const surface = Colors.white;
   static const surfaceVariant = Color(0xFFF3F4F6); // Gray-100
@@ -36,8 +37,6 @@ extension ColorExt on Color {
 }
 
 class AppTheme {
-  static var gradientsSecondary;
-
   static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,
@@ -112,5 +111,9 @@ class AppTheme {
 
   static List<Color> get gradients {
     return [AppColors.gradientStart, AppColors.gradientEnd];
+  }
+
+  static List<Color> get gradientsOrange {
+    return [AppColors.warning, AppColors.error];
   }
 }

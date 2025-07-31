@@ -49,7 +49,7 @@ class _ScanAnimationState extends State<ScanAnimation>
               gradient: const LinearGradient(
                 colors: [
                   Colors.transparent,
-                  AppColors.primaryVariant,
+                  AppColors.secondary,
                   Colors.transparent,
                 ],
               ),

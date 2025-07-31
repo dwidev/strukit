@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:strukit/core/themes/app_theme.dart';
+import 'package:strukit/pages/edit_receipt__page.dart';
 
 class ScannedReceiptPage extends StatefulWidget {
   const ScannedReceiptPage({super.key});
@@ -506,6 +507,12 @@ class _ScannedReceiptPageState extends State<ScannedReceiptPage> {
                   borderRadius: BorderRadius.circular(16),
                   onTap: () {
                     // Edit receipt logic
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EditReceiptPage(),
+                      ),
+                    );
                   },
                   child: const Center(
                     child: Row(
