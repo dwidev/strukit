@@ -20,13 +20,6 @@ class _HomePageState extends State<HomePage> {
   final double spent = 1250000;
   final double maxBudget = 5000000;
 
-  void _navigateToScanner() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const CameraPage()),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,19 +105,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: CustomBottomNavigation(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        onScanTap: () {
-          Future.delayed(600.ms, () {
-            _navigateToScanner();
-          });
-        },
       ),
     );
   }

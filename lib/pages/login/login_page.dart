@@ -8,6 +8,7 @@ import 'package:strukit/core/widgets/text_input_widget.dart';
 import 'package:strukit/pages/home_page.dart';
 import 'package:strukit/pages/login/widgets/auth_background_widget.dart';
 import 'package:strukit/pages/login/widgets/social_button_widget.dart';
+import 'package:strukit/pages/main_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -45,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
         context,
         PageRouteBuilder(
           pageBuilder: (context, animation, secondaryAnimation) =>
-              const HomePage(),
+              const MainPage(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(opacity: animation, child: child);
           },
