@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -102,10 +104,10 @@ class _ScannerPageState extends State<ScannerPage>
       await _compressImage();
 
       // Extract text
-      await _extractText();
+      // final ocrText = await _extractText();
 
       // Simulate AI analysis with realistic timing
-      await _simulateAIAnalysis();
+      await _simulateAIAnalysisFile();
 
       setState(() {
         isCompleted = true;
@@ -158,19 +160,74 @@ class _ScannerPageState extends State<ScannerPage>
       inputImage,
     );
 
-    String text = recognizedText.text;
-    debugPrint("""
-    ### DATA OCR ###
-    $text
-    ### end DATA OCR ###  
-    """);
+    List<String> lines = [];
+    for (TextBlock block in recognizedText.blocks) {
+      for (TextLine line in block.lines) {
+        String lineText = line.text.trim();
+        if (lineText.isNotEmpty) {
+          lines.add("$lineText\n");
+        }
+      }
+    }
 
-    return text;
+    String text =
+        """
+    ### DATA OCR ###
+    $lines
+    ### END DATA OCR ###  
+    """;
+
+    return recognizedText.text.isNotEmpty ? text.trim() : "";
   }
 
-  Future<void> _simulateAIAnalysis() async {
-    // Simulate realistic AI processing time
-    await Future.delayed(const Duration(milliseconds: 3000));
+  Future<void> _simulateAIAnalysis(ocrText) async {
+    try {
+      final s = Stopwatch();
+      s.start();
+      final response = await Dio(
+        BaseOptions(
+          baseUrl: "http://192.168.1.4:8000",
+          headers: {
+            "access-token":
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiJiZWNkNzI1OS0yYzZhLTQwNmEtODc0My01OTk4YzA5ZjYwM2IiLCJleHAiOjE3NTUxODc4ODQsImlhdCI6MTc1NTE1MTg4NH0.y9dKwp0rPSfIiSK_Sr6KcI6r7AMPbAj5gsvcVVgGyic",
+          },
+        ),
+      ).post("/api/v1/receipt/scan/ocr", data: {"rawOcr": ocrText});
+      s.stop();
+
+      print("response.requestOptions.data");
+      print(jsonEncode(response.data));
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> _simulateAIAnalysisFile() async {
+    try {
+      final s = Stopwatch();
+      s.start();
+      FormData formData = FormData.fromMap({
+        "image": await MultipartFile.fromFile(
+          widget.file.path,
+          filename: widget.file.name,
+        ),
+      });
+      final response = await Dio(
+        BaseOptions(
+          baseUrl: "http://192.168.1.4:8000",
+          headers: {
+            "access-token":
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiJiZWNkNzI1OS0yYzZhLTQwNmEtODc0My01OTk4YzA5ZjYwM2IiLCJleHAiOjE3NTUxODc4ODQsImlhdCI6MTc1NTE1MTg4NH0.y9dKwp0rPSfIiSK_Sr6KcI6r7AMPbAj5gsvcVVgGyic",
+          },
+        ),
+      ).post("/api/v1/receipt/scan/upload", data: formData);
+      s.stop();
+
+      print("${s.elapsedMilliseconds / 1000}s");
+      print(jsonEncode(response.data));
+    } catch (e) {
+      rethrow;
+    }
   }
 
   void _navigateToResult() {

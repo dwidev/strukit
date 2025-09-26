@@ -43,6 +43,8 @@ dependencies:
   google_mlkit_text_recognition: ^0.15.0
   font_awesome_flutter: ^10.7.0
   dev_utils: ^0.0.3
+  dio: ^5.9.0
+  firebase_core: ^4.1.1
 
 dev_dependencies:
   flutter_test:

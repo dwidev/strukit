@@ -34,7 +34,7 @@ class AppColors {
   // Status Colors (same for both themes)
   static const success = Color(0xFF4CAF50); // Green-500
   static const warning = Color(0xFFF59E0B); // Amber-500
-  static const error = Color(0xFFEF4444); // Red-500
+  static const error = Color(0xfFEF4444); // Red-500
 
   // Gradient Colors for Light Theme
   static const lightGradientStart = primary; // Indigo-600

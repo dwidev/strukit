@@ -1,12 +1,13 @@
 // main.dart
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:strukit/core/themes/app_theme.dart';
+import 'package:strukit/firebase_options.dart';
 import 'package:strukit/pages/login/login_page.dart';
-import 'package:strukit/pages/main_page.dart';
-import 'package:strukit/pages/profile/profile_page.dart';
-import 'package:strukit/pages/reports/report_page.dart';
 
-void main() {
+Future<void> main() async {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(const ReceiptScannerApp());
 }
 
