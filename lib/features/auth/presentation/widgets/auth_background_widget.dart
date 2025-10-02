@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-import '../../../core/themes/app_theme.dart';
+import '../../../../core/themes/app_theme.dart';
 
 class AuthBackgroundWidget extends StatelessWidget {
   const AuthBackgroundWidget({super.key});
