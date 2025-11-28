@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyD8nsXDdj2JyvrXI3HaJgfELBsPcxa2OeM</string>
+	<string>AIzaSyBfkUw0AW6NVg3pe3NDR1pOsCzbQAv8w0M</string>
 	<key>GCM_SENDER_ID</key>
-	<string>16634580933</string>
+	<string>643848464100</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.strukit</string>
+	<string>com.dwidev.strukit</string>
 	<key>PROJECT_ID</key>
-	<string>strukit-app</string>
+	<string>strukit-a7a2e</string>
 	<key>STORAGE_BUCKET</key>
-	<string>strukit-app.firebasestorage.app</string>
+	<string>strukit-a7a2e.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:16634580933:ios:5179efb647767ecfad05ac</string>
+	<string>1:643848464100:ios:5ce759969b6ba10de36ef1</string>
 </dict>
 </plist>

@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "16634580933",
-    "project_id": "strukit-app",
-    "storage_bucket": "strukit-app.firebasestorage.app"
+    "project_number": "643848464100",
+    "project_id": "strukit-a7a2e",
+    "storage_bucket": "strukit-a7a2e.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:16634580933:android:8be499d309226148ad05ac",
+        "mobilesdk_app_id": "1:643848464100:android:08dfccbb46ae279ce36ef1",
         "android_client_info": {
-          "package_name": "com.example.strukit"
+          "package_name": "com.dwidev.strukit"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBB2NYLiPqeCzsSwhZ5otgarRs8s_xPVoM"
+          "current_key": "AIzaSyAHty_xL6Pemuxe-ceql9cB25UsUzRt-vw"
         }
       ],
       "services": {

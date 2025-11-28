@@ -50,19 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBB2NYLiPqeCzsSwhZ5otgarRs8s_xPVoM',
-    appId: '1:16634580933:android:8be499d309226148ad05ac',
-    messagingSenderId: '16634580933',
-    projectId: 'strukit-app',
-    storageBucket: 'strukit-app.firebasestorage.app',
+    apiKey: 'AIzaSyAHty_xL6Pemuxe-ceql9cB25UsUzRt-vw',
+    appId: '1:643848464100:android:08dfccbb46ae279ce36ef1',
+    messagingSenderId: '643848464100',
+    projectId: 'strukit-a7a2e',
+    storageBucket: 'strukit-a7a2e.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD8nsXDdj2JyvrXI3HaJgfELBsPcxa2OeM',
-    appId: '1:16634580933:ios:5179efb647767ecfad05ac',
-    messagingSenderId: '16634580933',
-    projectId: 'strukit-app',
-    storageBucket: 'strukit-app.firebasestorage.app',
-    iosBundleId: 'com.example.strukit',
+    apiKey: 'AIzaSyBfkUw0AW6NVg3pe3NDR1pOsCzbQAv8w0M',
+    appId: '1:643848464100:ios:5ce759969b6ba10de36ef1',
+    messagingSenderId: '643848464100',
+    projectId: 'strukit-a7a2e',
+    storageBucket: 'strukit-a7a2e.firebasestorage.app',
+    iosBundleId: 'com.dwidev.strukit',
   );
+
 }

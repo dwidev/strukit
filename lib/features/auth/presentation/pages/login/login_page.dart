@@ -15,7 +15,7 @@ import 'package:strukit/pages/main_page.dart';
 import '../../bloc/authentication_bloc.dart';
 
 class LoginPage extends StatefulWidget {
-  static const path = 'login';
+  static const path = '/';
 
   const LoginPage({super.key});
 

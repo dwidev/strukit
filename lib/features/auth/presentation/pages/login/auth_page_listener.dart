@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/extensions/flushbar_extension.dart';
 import '../../bloc/authentication_bloc.dart';
 
-class AuthPageListener<T extends AuthenticationBloc> extends StatelessWidget {
+class AuthPageListener extends StatelessWidget {
   const AuthPageListener({super.key, required this.builder, this.onSuccess});
 
   final Function(BuildContext context, AuthenticationBloc prov) builder;
@@ -13,9 +13,9 @@ class AuthPageListener<T extends AuthenticationBloc> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authBloc = context.read<T>();
+    final authBloc = context.read<AuthenticationBloc>();
 
-    return BlocListener<T, AuthenticationState>(
+    return BlocListener<AuthenticationBloc, AuthenticationState>(
       listener: (context, state) {
         if (state.isLoading) {
           context.loading();
