@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -74,6 +76,7 @@ class AuthenticationBloc
 
     response.fold(
       (error) {
+        log("$error");
         emit(AuthenticationSignError(error: error));
       },
       (data) {

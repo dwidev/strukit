@@ -49,5 +49,18 @@
 	<string>This app requires access to your camera to scan receipts or bills.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>This app requires microphone access for voice input or audio features. (optional)</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.643848464100-6k0k7udhm9qni5gs3dgdspr29g8sn6p6</string>
+			</array>
+		</dict>
+	</array>
+	<key>GIDClientID</key>
+	<string>643848464100-6k0k7udhm9qni5gs3dgdspr29g8sn6p6.apps.googleusercontent.com</string>
 </dict>
 </plist>

@@ -5,7 +5,6 @@ import 'package:strukit/core/depedency_injection/injection.dart';
 import 'package:strukit/core/routers/routergo.dart';
 import 'package:strukit/core/themes/app_theme.dart';
 import 'package:strukit/firebase_options.dart';
-import 'package:strukit/features/auth/presentation/pages/login/login_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
